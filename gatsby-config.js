@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `gatsby-pokedex`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://gatsby-pokedex.pages.dev/`,
   },
-  plugins: [],
-}
+  plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp"],
+};
