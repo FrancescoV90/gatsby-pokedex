@@ -22,30 +22,27 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <div className={container}>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
-            <Link to="/" className={navLinkText}>
-              Home
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/about" className={navLinkText}>
-              About
-            </Link>
-          </li>
-          <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <header className={siteTitle}>
+        <p>{data.site.siteMetadata.title}</p>
+        <nav>
+          <ul className={navLinks}>
+            <li className={navLinkItem}>
+              <Link to="/" className={navLinkText}>
+                Home
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <main>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
+
+      <footer>
+        <p>&copy; {new Date().getFullYear()}, Gatsby Pokédex</p>
+      </footer>
     </div>
   );
 };

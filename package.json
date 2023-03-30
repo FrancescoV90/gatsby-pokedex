@@ -16,10 +16,6 @@
   },
   "dependencies": {
     "gatsby": "^4.25.5",
-    "gatsby-plugin-image": "^2.24.0",
-    "gatsby-plugin-sharp": "^4.24.0",
-    "gatsby-source-filesystem": "^4.24.0",
-    "gatsby-transformer-sharp": "^4.24.0",
     "node-fetch": "^2.6.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
