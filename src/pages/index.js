@@ -1,39 +1,36 @@
 import * as React from "react";
-import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import { StaticImage, GatsbyImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
+import usePokemon from '../hooks/usePokemon';
 
 const IndexPage = ({ data }) => {
+  const { pokemon: allPokemon } = usePokemon();
+
   return (
     <Layout pageTitle="Home Page">
-      <p>I'm making this by following the Gatsby Tutorial.</p>
-      <StaticImage
-        alt="Clifford, a reddish-brown pitbull, dozing in a bean bag chair"
-        src="../images/clifford.jpg"
-      />
-      <ul>
-        {data.allPokemon.nodes.map((pokemon) => (
-          <li key={pokemon.name}>
-            <h3>{pokemon.name}</h3>
-            <GatsbyImage image={pokemon.imageUrl} />
-          </li>
-        ))}
+      <ul className="pokedex">
+        {allPokemon.map((pokemon, index) => {
+          return (
+            <li key={pokemon.id} className="pokemon">
+              <div className="pokemon-image">
+                <img src={pokemon.image} alt={`${pokemon.name} Thumbnail`} />
+              </div>
+              <div className="pokemon-details">
+                <div>
+                  <h3>{pokemon.name}</h3>
+                  <p>{pokemon.types.join(", ")}</p>
+                </div>
+                <div>
+                  <span className="pokemon-index">{index + 1}</span>
+                </div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </Layout>
   );
 };
-
-export const query = graphql`
-  query {
-    allPokemon {
-      nodes {
-        name
-        imageUrl
-      }
-    }
-  }
-`;
 
 export const Head = () => <Seo title="Home Page" />;
 

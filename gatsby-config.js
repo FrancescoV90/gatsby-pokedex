@@ -13,11 +13,5 @@ module.exports = {
         path: `${__dirname}/blog`,
       },
     },
-    {
-      resolve: `gatsby-source-pokemon`,
-      options: {
-        nbOfPokemons: 151,
-      },
-    },
   ],
 };
