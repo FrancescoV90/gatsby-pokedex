@@ -16,7 +16,7 @@ const IndexPage = ({ data }) => {
         {data.allPokemon.nodes.map((pokemon) => (
           <li key={pokemon.name}>
             <h3>{pokemon.name}</h3>
-            <GatsbyImage image={pokemon.image} />
+            <GatsbyImage image={pokemon.imageUrl} />
           </li>
         ))}
       </ul>
@@ -29,7 +29,7 @@ export const query = graphql`
     allPokemon {
       nodes {
         name
-        image
+        imageUrl
       }
     }
   }
