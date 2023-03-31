@@ -1,10 +1,12 @@
 import * as React from "react";
+import { Link } from "gatsby";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import usePokemon from "../hooks/usePokemon";
 import {
   pokedex,
   pokedexItem,
+  pokemonLink,
   pokemonImage,
   pokemonImageImg,
   pokemonDetails,
@@ -23,24 +25,26 @@ const IndexPage = ({ data }) => {
         {allPokemon.map((pokemon, index) => {
           return (
             <li key={pokemon.id} className={pokedexItem}>
-              <div className={pokemonImage}>
-                <img
-                  src={pokemon.image}
-                  alt={`${pokemon.name} Thumbnail`}
-                  className={pokemonImageImg}
-                />
-              </div>
-              <div className={pokemonDetails}>
-                <div className={pokemonDetailsWrapper}>
-                  <h3 className={pokemonDetailsTitle}>{pokemon.name}</h3>
-                  <p className={pokemonDetailsText}>
-                    {pokemon.types.join(", ")}
-                  </p>
+              <Link to={`/${pokemon.name}`} className={pokemonLink}>
+                <div className={pokemonImage}>
+                  <img
+                    src={pokemon.image}
+                    alt={`${pokemon.name} Thumbnail`}
+                    className={pokemonImageImg}
+                  />
                 </div>
-                <div>
-                  <span className={pokemonIndex}>{index + 1}</span>
+                <div className={pokemonDetails}>
+                  <div className={pokemonDetailsWrapper}>
+                    <h3 className={pokemonDetailsTitle}>{pokemon.name}</h3>
+                    <p className={pokemonDetailsText}>
+                      {pokemon.types.join(", ")}
+                    </p>
+                  </div>
+                  <div>
+                    <span className={pokemonIndex}>{index + 1}</span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </li>
           );
         })}

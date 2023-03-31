@@ -25,6 +25,10 @@
     0 92%
   );
 }
+.pokemonLink {
+  text-decoration: none;
+  color: black;
+}
 .pokemonImage {
   position: relative;
   height: 0;
@@ -53,6 +57,7 @@
   justify-content: center;
 }
 .pokemonDetailsTitle {
+  text-transform: capitalize;
   font-size: 1em;
   margin: 0;
 }
