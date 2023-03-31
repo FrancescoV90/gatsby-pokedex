@@ -1,20 +1,30 @@
-.container {
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.main {
   width: 100%;
   max-width: 50em;
   margin: 0 auto;
-  font-family: Helvetica, Arial, sans-serif;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 2em 0;
+  background-color: red;
 }
 .header {
   width: 100%;
+  max-width: 50em;
+  margin: 0 auto;
   color: white;
   background-color: darkred;
   display: flex;
   justify-content: space-between;
   height: 4em;
   line-height: 4em;
-}
-.heading {
-  color: rebeccapurple;
 }
 .nav-links {
   list-style: none;
@@ -34,9 +44,12 @@
   font-size: 2em;
   font-weight: bold;
   margin: 0;
+  padding: 0 0.5em;
 }
 .footer {
   width: 100%;
+  max-width: 50em;
+  margin: 0 auto;
   height: 2em;
   line-height: 2em;
   color: white;

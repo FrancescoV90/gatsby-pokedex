@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import {
-  container,
+  wrapper,
+  main,
   header,
-  heading,
   navLinks,
   navLinkItem,
   navLinkText,
   siteTitle,
   footer,
-  disclaimer
+  disclaimer,
 } from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
@@ -24,9 +24,9 @@ const Layout = ({ pageTitle, children }) => {
   `);
 
   return (
-    <div className={container}>
+    <div className={wrapper}>
       <header className={header}>
-        <p className={siteTitle}>{data.site.siteMetadata.title}</p>
+        <h1 className={siteTitle}>{pageTitle}</h1>
         <nav>
           <ul className={navLinks}>
             <li className={navLinkItem}>
@@ -38,13 +38,12 @@ const Layout = ({ pageTitle, children }) => {
         </nav>
       </header>
 
-      <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
-      </main>
+      <main className={main}>{children}</main>
 
       <footer className={footer}>
-        <p className={disclaimer}>&copy; {new Date().getFullYear()}, Gatsby Pokédex</p>
+        <p className={disclaimer}>
+          &copy; {new Date().getFullYear()}, Gatsby Pokédex
+        </p>
       </footer>
     </div>
   );

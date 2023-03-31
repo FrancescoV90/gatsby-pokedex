@@ -3,8 +3,6 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import usePokemon from "../hooks/usePokemon";
 import {
-  pageHome,
-  pageHomeTitle,
   pokedex,
   pokedexItem,
   pokemonImage,
@@ -20,7 +18,7 @@ const IndexPage = ({ data }) => {
   const { pokemon: allPokemon } = usePokemon();
 
   return (
-    <Layout pageTitle="Home Page">
+    <Layout pageTitle="Gatsby Pokédex">
       <ul className={pokedex}>
         {allPokemon.map((pokemon, index) => {
           return (
