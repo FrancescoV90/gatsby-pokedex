@@ -2,11 +2,14 @@ import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import {
   container,
+  header,
   heading,
   navLinks,
   navLinkItem,
   navLinkText,
   siteTitle,
+  footer,
+  disclaimer
 } from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
@@ -22,8 +25,8 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <div className={container}>
-      <header className={siteTitle}>
-        <p>{data.site.siteMetadata.title}</p>
+      <header className={header}>
+        <p className={siteTitle}>{data.site.siteMetadata.title}</p>
         <nav>
           <ul className={navLinks}>
             <li className={navLinkItem}>
@@ -40,8 +43,8 @@ const Layout = ({ pageTitle, children }) => {
         {children}
       </main>
 
-      <footer>
-        <p>&copy; {new Date().getFullYear()}, Gatsby Pokédex</p>
+      <footer className={footer}>
+        <p className={disclaimer}>&copy; {new Date().getFullYear()}, Gatsby Pokédex</p>
       </footer>
     </div>
   );
