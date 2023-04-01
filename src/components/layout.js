@@ -1,6 +1,13 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { wrapper, main, header, siteTitle, footer } from "./layout.module.css";
+import {
+  wrapper,
+  main,
+  header,
+  siteTitle,
+  navLink,
+  footer,
+} from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -20,7 +27,9 @@ const Layout = ({ pageTitle, children }) => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Pokédex</Link>
+              <Link to="/" className={navLink}>
+                Pokédex
+              </Link>
             </li>
           </ul>
         </nav>

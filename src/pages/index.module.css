@@ -11,7 +11,6 @@
   position: relative;
   text-align: left;
   background-color: mintcream;
-  padding: 1.5rem;
   border-radius: 0.5rem;
   clip-path: polygon(
     0% 0%,
@@ -25,8 +24,13 @@
   );
 }
 .pokemonLink {
+  display: block;
+  padding: 1.5rem;
   text-decoration: none;
   color: black;
+}
+.pokemonLink:hover > .pokemonImage {
+  transform: scale(1.2);
 }
 .pokemonImage {
   position: relative;
