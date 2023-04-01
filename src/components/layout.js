@@ -28,7 +28,7 @@ const Layout = ({ pageTitle, children }) => {
       <main className={main}>{children}</main>
 
       <footer className={footer}>
-        <p>&copy; {new Date().getFullYear()}, Gatsby Pokédex</p>
+        <p>{new Date().getFullYear()}, Gatsby Pokédex</p>
       </footer>
     </div>
   );
