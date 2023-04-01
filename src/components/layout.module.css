@@ -12,7 +12,8 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  padding: 2rem 0;
+  align-self: flex-start;
+  padding: 1rem 0;
 }
 .header {
   width: 100%;

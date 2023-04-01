@@ -4,6 +4,8 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import usePokemon from "../hooks/usePokemon";
 import {
+  searchWrapper,
+  searchInput,
   pokedex,
   pokedexItem,
   pokemonLink,
@@ -18,11 +20,28 @@ import {
 
 const IndexPage = ({ data }) => {
   const { pokemon: allPokemon } = usePokemon();
+  const [filteredPokemon, setFilteredPokemon] = new React.useState(allPokemon);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedPokemon = [...allPokemon];
+    updatedPokemon = updatedPokemon.filter((item) => {
+      return item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    setFilteredPokemon(updatedPokemon);
+  };
 
   return (
     <Layout pageTitle="Gatsby Pokédex">
+      <div className={searchWrapper}>
+        <input
+          placeholder="Search by pokemon Name"
+          className={searchInput}
+          onChange={filterBySearch}
+        />
+      </div>
       <ul className={pokedex}>
-        {allPokemon.map((pokemon, index) => {
+        {filteredPokemon.map((pokemon, index) => {
           return (
             <li key={pokemon.id} className={pokedexItem}>
               <Link to={`/${pokemon.name}`} className={pokemonLink}>
