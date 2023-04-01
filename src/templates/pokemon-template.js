@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 const PokemonTemplate = ({ data }) => {
   const pokemon = data.allPokemon.nodes[0];
   return (
-    <Layout pageTitle={`Gatsby Pokédex | ${pokemon.name}`}>
+    <Layout pageTitle={pokemon.name}>
       <div></div>
     </Layout>
   );
