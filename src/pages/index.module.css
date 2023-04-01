@@ -9,6 +9,17 @@
   border-radius: 8px;
   border: 1px solid #666666;
 }
+.emptySearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
+.emptySearchText {
+  font-weight: 500;
+}
 .pokedex {
   display: grid;
   grid-gap: 1.5rem;

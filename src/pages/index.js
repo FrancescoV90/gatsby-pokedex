@@ -1,11 +1,14 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import usePokemon from "../hooks/usePokemon";
 import {
   searchWrapper,
   searchInput,
+  emptySearch,
+  emptySearchText,
   pokedex,
   pokedexItem,
   pokemonLink,
@@ -40,34 +43,48 @@ const IndexPage = ({ data }) => {
           onChange={filterBySearch}
         />
       </div>
-      <ul className={pokedex}>
-        {filteredPokemon.map((pokemon, index) => {
-          return (
-            <li key={pokemon.id} className={pokedexItem}>
-              <Link to={`/${pokemon.name}`} className={pokemonLink}>
-                <div className={pokemonImage}>
-                  <img
-                    src={pokemon.image}
-                    alt={`${pokemon.name} Thumbnail`}
-                    className={pokemonImageImg}
-                  />
-                </div>
-                <div className={pokemonDetails}>
-                  <div className={pokemonDetailsWrapper}>
-                    <h3 className={pokemonDetailsTitle}>{pokemon.name}</h3>
-                    <p className={pokemonDetailsText}>
-                      {pokemon.types.join(", ")}
-                    </p>
+      {filteredPokemon.length ? (
+        <ul className={pokedex}>
+          {filteredPokemon.map((pokemon, index) => {
+            return (
+              <li key={pokemon.id} className={pokedexItem}>
+                <Link to={`/${pokemon.name}`} className={pokemonLink}>
+                  <div className={pokemonImage}>
+                    <img
+                      src={pokemon.image}
+                      alt={`${pokemon.name} Thumbnail`}
+                      loading="lazy"
+                      className={pokemonImageImg}
+                    />
                   </div>
-                  <div>
-                    <span className={pokemonIndex}>{index + 1}</span>
+                  <div className={pokemonDetails}>
+                    <div className={pokemonDetailsWrapper}>
+                      <h3 className={pokemonDetailsTitle}>{pokemon.name}</h3>
+                      <p className={pokemonDetailsText}>
+                        {pokemon.types.join(", ")}
+                      </p>
+                    </div>
+                    <div>
+                      <span className={pokemonIndex}>{index + 1}</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <div className={emptySearch}>
+          <p className={emptySearchText}>No Pokémon found with this search</p>
+          <StaticImage
+            src="../images/icon.png"
+            alt="A pokeball"
+            placeholder="blurred"
+            width={250}
+            height={250}
+          />
+        </div>
+      )}
     </Layout>
   );
 };

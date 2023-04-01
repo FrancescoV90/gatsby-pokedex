@@ -3,6 +3,8 @@ module.exports = {
     title: "Gatsby Pokedex",
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
