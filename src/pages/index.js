@@ -1,5 +1,6 @@
+import {graphql} from 'gatsby';
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -22,6 +23,7 @@ import {
 } from "./index.module.css";
 
 const IndexPage = ({ data }) => {
+  const {t} = useTranslation();
   const { pokemon: allPokemon } = usePokemon();
   const [filteredPokemon, setFilteredPokemon] = new React.useState(allPokemon);
 
@@ -35,10 +37,10 @@ const IndexPage = ({ data }) => {
   };
 
   return (
-    <Layout pageTitle="Gatsby Pokédex">
+    <Layout pageTitle={t('pokedex')}>
       <div className={searchWrapper}>
         <input
-          placeholder="Search by pokemon Name"
+          placeholder={t('search_placeholder')}
           className={searchInput}
           onChange={filterBySearch}
         />
@@ -52,7 +54,7 @@ const IndexPage = ({ data }) => {
                   <div className={pokemonImage}>
                     <img
                       src={pokemon.image}
-                      alt={`${pokemon.name} Thumbnail`}
+                      alt={`${pokemon.name} ${t('thumbnail')}`}
                       loading="lazy"
                       className={pokemonImageImg}
                     />
@@ -75,10 +77,10 @@ const IndexPage = ({ data }) => {
         </ul>
       ) : (
         <div className={emptySearch}>
-          <p className={emptySearchText}>No Pokémon found with this search</p>
+          <p className={emptySearchText}>{t('empty_search')}</p>
           <StaticImage
             src="../images/icon.png"
-            alt="A pokeball"
+            alt={t('pokeball')}
             placeholder="blurred"
             width={250}
             height={250}
@@ -92,3 +94,19 @@ const IndexPage = ({ data }) => {
 export const Head = () => <Seo title="Home Page" />;
 
 export default IndexPage;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(
+      filter: { ns: { in: ["index"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
