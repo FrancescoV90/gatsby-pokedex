@@ -44,7 +44,7 @@ const PokemonTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query ($slug: String!) {
+  query ($slug: String!, $language: String!) {
     allPokemon(filter: { name: { eq: $slug } }) {
       nodes {
         id
@@ -69,6 +69,17 @@ export const query = graphql`
         }
         pokedex_numbers {
           entry_number
+        }
+      }
+    }
+    locales: allLocale(
+      filter: { ns: { in: ["index"] }, language: { eq: $language } }
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
         }
       }
     }

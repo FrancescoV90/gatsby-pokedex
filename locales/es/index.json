@@ -1,5 +1,6 @@
 {
   "pokedex": "Pokédex",
+  "gatsby_pokedex": "Gatsby Pokédex",
   "search_placeholder": "Buscar por Nombre de Pokémon",
   "thumbnail": "Miniatura",
   "empty_search": "No se encontraron Pokémon con esta búsqueda",

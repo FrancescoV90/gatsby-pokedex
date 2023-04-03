@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import {
   wrapper,
   main,
@@ -10,6 +10,8 @@ import {
 } from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={wrapper}>
       <header className={header}>
@@ -18,7 +20,7 @@ const Layout = ({ pageTitle, children }) => {
           <ul>
             <li>
               <Link to="/" className={navLink}>
-                Pokédex
+                {t("pokedex")}
               </Link>
             </li>
           </ul>
@@ -28,7 +30,9 @@ const Layout = ({ pageTitle, children }) => {
       <main className={main}>{children}</main>
 
       <footer className={footer}>
-        <p>{new Date().getFullYear()}, Gatsby Pokédex</p>
+        <p>
+          {new Date().getFullYear()}, {t("gatsby_pokedex")}
+        </p>
       </footer>
     </div>
   );

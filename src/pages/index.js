@@ -1,4 +1,4 @@
-import {graphql} from 'gatsby';
+import { graphql } from "gatsby";
 import * as React from "react";
 import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
@@ -23,7 +23,7 @@ import {
 } from "./index.module.css";
 
 const IndexPage = ({ data }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { pokemon: allPokemon } = usePokemon();
   const [filteredPokemon, setFilteredPokemon] = new React.useState(allPokemon);
 
@@ -37,10 +37,10 @@ const IndexPage = ({ data }) => {
   };
 
   return (
-    <Layout pageTitle={t('pokedex')}>
+    <Layout pageTitle={t("pokedex")}>
       <div className={searchWrapper}>
         <input
-          placeholder={t('search_placeholder')}
+          placeholder={t("search_placeholder")}
           className={searchInput}
           onChange={filterBySearch}
         />
@@ -54,7 +54,7 @@ const IndexPage = ({ data }) => {
                   <div className={pokemonImage}>
                     <img
                       src={pokemon.image}
-                      alt={`${pokemon.name} ${t('thumbnail')}`}
+                      alt={`${pokemon.name} ${t("thumbnail")}`}
                       loading="lazy"
                       className={pokemonImageImg}
                     />
@@ -77,10 +77,10 @@ const IndexPage = ({ data }) => {
         </ul>
       ) : (
         <div className={emptySearch}>
-          <p className={emptySearchText}>{t('empty_search')}</p>
+          <p className={emptySearchText}>{t("empty_search")}</p>
           <StaticImage
             src="../images/icon.png"
-            alt={t('pokeball')}
+            alt={t("pokeball")}
             placeholder="blurred"
             width={250}
             height={250}
