@@ -4,29 +4,28 @@ import {
   wrapper,
   main,
   header,
+  siteLink,
   siteTitle,
-  navLink,
+  langList,
+  langLink,
   footer,
 } from "./layout.module.css";
 
-const Layout = ({ pageTitle, children }) => {
+const Layout = ({ children }) => {
   const { t } = useTranslation();
   const { languages, originalPath } = useI18next();
 
   return (
     <div className={wrapper}>
       <header className={header}>
-        <h1 className={siteTitle}>{pageTitle}</h1>
+        <Link to="/" className={siteLink}>
+          <h1 className={siteTitle}>{t("pokedex")}</h1>
+        </Link>
         <nav>
-          <ul>
-            <li>
-              <Link to="/" className={navLink}>
-                {t("pokedex")}
-              </Link>
-            </li>
+          <ul className={langList}>
             {languages.map((lng) => (
               <li key={lng}>
-                <Link to={originalPath} language={lng}>
+                <Link to={originalPath} language={lng} className={langLink}>
                   {lng}
                 </Link>
               </li>

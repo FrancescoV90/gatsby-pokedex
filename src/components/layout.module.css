@@ -26,11 +26,18 @@
   text-transform: capitalize;
   padding: 0 1rem;
 }
+.siteLink {
+  color: black;
+}
 .siteTitle {
   font-size: 2rem;
   font-weight: bold;
 }
-.navLink {
+.langList {
+  display: flex;
+  gap: 1.5rem;
+}
+.langLink {
   display: block;
   color: black;
 }

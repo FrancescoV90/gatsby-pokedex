@@ -37,7 +37,7 @@ const IndexPage = ({ data }) => {
   };
 
   return (
-    <Layout pageTitle={t("pokedex")}>
+    <Layout>
       <div className={searchWrapper}>
         <input
           placeholder={t("search_placeholder")}

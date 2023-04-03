@@ -14,7 +14,7 @@ import {
 const PokemonTemplate = ({ data }) => {
   const pokemon = data.allPokemon.nodes[0];
   return (
-    <Layout pageTitle={pokemon.name}>
+    <Layout>
       <div className={pokemonHeader}>
         <h1 className={pokemonName}>{pokemon.name} N° </h1>
         <span className={pokemonIndex}>
