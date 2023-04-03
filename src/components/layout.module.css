@@ -23,7 +23,6 @@
   justify-content: space-between;
   height: 4rem;
   line-height: 4rem;
-  text-transform: capitalize;
   padding: 0 1rem;
 }
 .siteLink {
@@ -35,11 +34,12 @@
 }
 .langList {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .langLink {
   display: block;
   color: black;
+  padding: 0 0.5rem;
 }
 .footer {
   width: 100%;

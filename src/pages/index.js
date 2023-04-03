@@ -1,10 +1,13 @@
-import { graphql } from "gatsby";
 import * as React from "react";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
+import {
+  Link,
+  useTranslation,
+  I18nextContext,
+} from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import usePokemon from "../hooks/usePokemon";
 import {
   searchWrapper,
   searchInput,
@@ -18,13 +21,24 @@ import {
   pokemonDetails,
   pokemonDetailsWrapper,
   pokemonDetailsTitle,
-  pokemonDetailsText,
   pokemonIndex,
 } from "./index.module.css";
 
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
-  const { pokemon: allPokemon } = usePokemon();
+  const { language } = React.useContext(I18nextContext);
+  const allPokemon = data.allPokemon.nodes.map((node) => {
+    const { id, name, names, sprites, pokedex_numbers } = node;
+    return {
+      id,
+      slug: name,
+      name: names.find((name) => name.language.name === language).name,
+      image: sprites.front_default,
+      pokedex_number: pokedex_numbers.find(
+        (pokedex) => pokedex.pokedex.name === "kanto"
+      ).entry_number,
+    };
+  });
   const [filteredPokemon, setFilteredPokemon] = new React.useState(allPokemon);
 
   const filterBySearch = (event) => {
@@ -50,7 +64,7 @@ const IndexPage = ({ data }) => {
           {filteredPokemon.map((pokemon, index) => {
             return (
               <li key={pokemon.id} className={pokedexItem}>
-                <Link to={`/${pokemon.name}`} className={pokemonLink}>
+                <Link to={`/${pokemon.slug}`} className={pokemonLink}>
                   <div className={pokemonImage}>
                     <img
                       src={pokemon.image}
@@ -62,12 +76,11 @@ const IndexPage = ({ data }) => {
                   <div className={pokemonDetails}>
                     <div className={pokemonDetailsWrapper}>
                       <h3 className={pokemonDetailsTitle}>{pokemon.name}</h3>
-                      <p className={pokemonDetailsText}>
-                        {pokemon.types.join(", ")}
-                      </p>
                     </div>
                     <div>
-                      <span className={pokemonIndex}>{index + 1}</span>
+                      <span className={pokemonIndex}>
+                        {pokemon.pokedex_number}
+                      </span>
                     </div>
                   </div>
                 </Link>
@@ -105,6 +118,27 @@ export const query = graphql`
           ns
           data
           language
+        }
+      }
+    }
+    allPokemon {
+      nodes {
+        id
+        name
+        names {
+          name
+          language {
+            name
+          }
+        }
+        sprites {
+          front_default
+        }
+        pokedex_numbers {
+          entry_number
+          pokedex {
+            name
+          }
         }
       }
     }
