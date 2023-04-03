@@ -10,7 +10,7 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions;
 
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
   const json = await response.json();
   const { results = [] } = json;
 
