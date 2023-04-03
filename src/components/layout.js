@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 import {
   wrapper,
   main,
@@ -11,6 +11,7 @@ import {
 
 const Layout = ({ pageTitle, children }) => {
   const { t } = useTranslation();
+  const { languages, originalPath } = useI18next();
 
   return (
     <div className={wrapper}>
@@ -23,6 +24,13 @@ const Layout = ({ pageTitle, children }) => {
                 {t("pokedex")}
               </Link>
             </li>
+            {languages.map((lng) => (
+              <li key={lng}>
+                <Link to={originalPath} language={lng}>
+                  {lng}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>
