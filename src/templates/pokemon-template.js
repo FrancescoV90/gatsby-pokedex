@@ -8,10 +8,10 @@ import {
   pokemonWrapper,
   pokemonImage,
   pokemonContent,
-  pokemonType,
 } from "./pokemon-template.module.css";
 
-const PokemonTemplate = ({ data }) => {
+const PokemonTemplate = ({ data, pageContext }) => {
+  console.log(pageContext);
   const pokemon = data.allPokemon.nodes[0];
   return (
     <Layout>
@@ -33,9 +33,6 @@ const PokemonTemplate = ({ data }) => {
         </div>
         <div className={pokemonContent}>
           <h2>{pokemon.genera[7].genus}</h2>
-          <p className={pokemonType}>
-            {pokemon.types.map((type) => type.type.name)}
-          </p>
           <p>{pokemon.flavor_text_entries[0].flavor_text}</p>
         </div>
       </div>
@@ -44,34 +41,7 @@ const PokemonTemplate = ({ data }) => {
 };
 
 export const query = graphql`
-  query ($slug: String!, $language: String!) {
-    allPokemon(filter: { name: { eq: $slug } }) {
-      nodes {
-        id
-        name
-        types {
-          type {
-            name
-          }
-        }
-        sprites {
-          other {
-            official_artwork {
-              front_default
-            }
-          }
-        }
-        flavor_text_entries {
-          flavor_text
-        }
-        genera {
-          genus
-        }
-        pokedex_numbers {
-          entry_number
-        }
-      }
-    }
+  query ($name: String!, $language: String!) {
     locales: allLocale(
       filter: { ns: { in: ["index"] }, language: { eq: $language } }
     ) {
@@ -80,6 +50,37 @@ export const query = graphql`
           ns
           data
           language
+        }
+      }
+    }
+    allPokemon(filter: { name: { eq: $name } }) {
+      nodes {
+        id
+        name
+        sprites {
+          other {
+            official_artwork {
+              front_default
+            }
+          }
+        }
+        genera {
+          genus
+          language {
+            name
+          }
+        }
+        flavor_text_entries {
+          flavor_text
+          language {
+            name
+          }
+        }
+        pokedex_numbers {
+          entry_number
+          pokedex {
+            name
+          }
         }
       }
     }
