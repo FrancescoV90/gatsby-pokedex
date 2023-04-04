@@ -40,6 +40,7 @@
   display: block;
   color: black;
   padding: 0 0.5rem;
+  text-transform: uppercase;
 }
 .footer {
   width: 100%;

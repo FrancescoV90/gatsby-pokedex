@@ -1,8 +1,9 @@
 {
   "pokedex": "Pokédex",
-  "gatsby_pokedex": "Gatsby Pokédex",
+  "gatsby_pokedex": "Pokédex made with Gatsby",
   "search_placeholder": "Search by Pokémon Name",
   "thumbnail": "Thumbnail",
   "empty_search": "No Pokémon found with this search",
-  "pokeball": "A Poké Ball"
+  "pokeball": "A Poké Ball",
+  "pokemon_list": "Pokemon List"
 }

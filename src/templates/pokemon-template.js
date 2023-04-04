@@ -1,7 +1,12 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { I18nextContext } from "gatsby-plugin-react-i18next";
+import {
+  Link,
+  useTranslation,
+  I18nextContext,
+} from "gatsby-plugin-react-i18next";
 import Layout from "../components/layout";
+import Seo from "../components/seo";
 import {
   pokemonHeader,
   pokemonName,
@@ -9,9 +14,12 @@ import {
   pokemonWrapper,
   pokemonImage,
   pokemonContent,
+  pokemonLastDescription,
+  pokemonListLink
 } from "./pokemon-template.module.css";
 
 const PokemonTemplate = ({ pageContext }) => {
+  const { t } = useTranslation();
   const { language } = React.useContext(I18nextContext);
   const pokemon = {
     id: pageContext.id,
@@ -55,12 +63,25 @@ const PokemonTemplate = ({ pageContext }) => {
         <div className={pokemonContent}>
           <h2>{pokemon.genus}</h2>
           <p>{pokemon.description1.replace(/(\f|\n)/gm, " ")}</p>
-          <p>{pokemon.description2.replace(/(\f|\n)/gm, " ")}</p>
+          <p className={pokemonLastDescription}>
+            {pokemon.description2.replace(/(\f|\n)/gm, " ")}
+          </p>
+          <Link to="/" className={pokemonListLink}>
+            {t("pokemon_list")}
+          </Link>
         </div>
       </div>
     </Layout>
   );
 };
+
+export const Head = ({ pageContext }) => (
+  <Seo
+    title={pageContext.name.charAt(0).toUpperCase() + pageContext.name.slice(1)}
+  />
+);
+
+export default PokemonTemplate;
 
 export const query = graphql`
   query ($language: String!) {
@@ -77,5 +98,3 @@ export const query = graphql`
     }
   }
 `;
-
-export default PokemonTemplate;
