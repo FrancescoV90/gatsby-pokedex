@@ -12,14 +12,15 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "gatsby": "^4.25.5",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
-    "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-plugin-react-i18next": "^2.0.4",
+    "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-source-filesystem": "^4.24.0",
     "i18next": "^21.9.1",
     "node-fetch": "^2.6.9",
@@ -29,5 +30,8 @@
   },
   "volta": {
     "node": "17.9.1"
+  },
+  "devDependencies": {
+    "cypress": "^12.9.0"
   }
 }
