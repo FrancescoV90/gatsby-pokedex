@@ -51,13 +51,30 @@ exports.createPages = async function ({ actions, graphql }) {
           node {
             id
             name
-            types {
-              type {
+            sprites {
+              other {
+                official_artwork {
+                  front_default
+                }
+              }
+            }
+            genera {
+              genus
+              language {
                 name
               }
             }
-            sprites {
-              front_default
+            flavor_text_entries {
+              flavor_text
+              language {
+                name
+              }
+            }
+            pokedex_numbers {
+              entry_number
+              pokedex {
+                name
+              }
             }
           }
         }
@@ -69,7 +86,7 @@ exports.createPages = async function ({ actions, graphql }) {
     actions.createPage({
       path: slug,
       component: require.resolve(`./src/templates/pokemon-template.js`),
-      context: { slug: slug },
+      context: edge.node,
     });
   });
 };
