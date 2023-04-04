@@ -51,6 +51,12 @@ exports.createPages = async function ({ actions, graphql }) {
           node {
             id
             name
+            names {
+              name
+              language {
+                name
+              }
+            }
             sprites {
               other {
                 official_artwork {
@@ -67,6 +73,9 @@ exports.createPages = async function ({ actions, graphql }) {
             flavor_text_entries {
               flavor_text
               language {
+                name
+              }
+              version {
                 name
               }
             }

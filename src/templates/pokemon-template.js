@@ -24,8 +24,15 @@ const PokemonTemplate = ({ pageContext }) => {
     image: pageContext.sprites.other.official_artwork.front_default,
     genus: pageContext.genera.find((genus) => genus.language.name === language)
       .genus,
-    description: pageContext.flavor_text_entries.find(
-      (description) => description.language.name === language
+    description1: pageContext.flavor_text_entries.find(
+      (description) =>
+        description.language.name === language &&
+        description.version.name === "x"
+    ).flavor_text,
+    description2: pageContext.flavor_text_entries.find(
+      (description) =>
+        description.language.name === language &&
+        description.version.name === "y"
     ).flavor_text,
   };
 
@@ -47,7 +54,8 @@ const PokemonTemplate = ({ pageContext }) => {
         </div>
         <div className={pokemonContent}>
           <h2>{pokemon.genus}</h2>
-          <p>{pokemon.description}</p>
+          <p>{pokemon.description1.replace(/(\f|\n)/gm, " ")}</p>
+          <p>{pokemon.description2.replace(/(\f|\n)/gm, " ")}</p>
         </div>
       </div>
     </Layout>
