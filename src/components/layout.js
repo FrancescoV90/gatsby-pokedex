@@ -26,6 +26,14 @@ const Layout = ({ children }) => {
             {languages.map((lng) => (
               <li key={lng}>
                 <Link to={originalPath} language={lng} className={langLink}>
+                  <img
+                    src={`https://truelayer.com/images/flags/${
+                      lng === "en" ? "gb" : lng
+                    }.svg`}
+                    alt="Language flag"
+                    width={24}
+                    height={18}
+                  />
                   {lng}
                 </Link>
               </li>

@@ -37,7 +37,9 @@
   gap: 1rem;
 }
 .langLink {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: black;
   padding: 0 0.5rem;
   text-transform: uppercase;
