@@ -1,49 +1,34 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
+  <img alt="Gatsby" src="https://gatsby-pokedex.pages.dev/icons/icon-512x512.png?v=d37e56d401adf5cdd18919945d72bcff" width="60" />
 </p>
 <h1 align="center">
-  Gatsby Minimal Starter
+  Gatsby Pokedex
 </h1>
 
-## 🚀 Quick start
+## **Public access to the project.**
+Repo: https://github.com/FrancescoV90/gatsby-pokedex
+Web Release: https://gatsby-pokedex.pages.dev/
 
-1.  **Create a Gatsby site.**
+## **Start local developing.**
+Navigate into site’s directory and start it up.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+```shell
+cd gatsby-pokedex/
+npm run develop
+```
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## **Start local unit testing.**
+Navigate into site’s directory and start unit tests with jest.
 
-2.  **Start developing.**
+```shell
+cd gatsby-pokedex/
+npm run test
+```
 
-    Navigate into your new site’s directory and start it up.
+## **Start local E2E testing.**
+Navigate into site’s directory and start E2E tests with cypress.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+```shell
+cd gatsby-pokedex/
+npm run cypress:open
+```

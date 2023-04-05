@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-export default function usePokemon() {
+const usePokemon = () => {
   const data = useStaticQuery(graphql`
     query {
       allPokemon {
@@ -32,4 +32,6 @@ export default function usePokemon() {
   return {
     pokemonData,
   };
-}
+};
+
+export default usePokemon;
