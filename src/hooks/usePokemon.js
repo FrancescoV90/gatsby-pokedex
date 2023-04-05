@@ -7,30 +7,29 @@ export default function usePokemon() {
         nodes {
           id
           name
-          types {
-            type {
+          names {
+            name
+            language {
               name
             }
           }
           sprites {
             front_default
           }
+          pokedex_numbers {
+            entry_number
+            pokedex {
+              name
+            }
+          }
         }
       }
     }
   `);
 
-  const pokemon = data.allPokemon.nodes.map((node) => {
-    const { name, types, id, sprites } = node;
-    return {
-      name,
-      id,
-      types: types.map((type) => type.type.name),
-      image: sprites.front_default,
-    };
-  });
+  const pokemonData = data.allPokemon;
 
   return {
-    pokemon,
+    pokemonData,
   };
 }

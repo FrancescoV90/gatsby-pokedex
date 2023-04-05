@@ -8,6 +8,7 @@ import {
 import { StaticImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
+import usePokemon from "../hooks/usePokemon";
 import {
   searchWrapper,
   searchInput,
@@ -27,7 +28,8 @@ import {
 const IndexPage = ({ data }) => {
   const { t } = useTranslation();
   const { language } = React.useContext(I18nextContext);
-  const allPokemon = data.allPokemon.nodes.map((node) => {
+  const { pokemonData } = usePokemon();
+  const allPokemon = pokemonData.nodes.map((node) => {
     const { id, name, names, sprites, pokedex_numbers } = node;
     return {
       id,
