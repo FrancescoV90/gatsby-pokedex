@@ -25,7 +25,7 @@ import {
   pokemonIndex,
 } from "./index.module.css";
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   const { t } = useTranslation();
   const { language } = React.useContext(I18nextContext);
   const { pokemonData } = usePokemon();
@@ -63,7 +63,7 @@ const IndexPage = ({ data }) => {
       </div>
       {filteredPokemon.length ? (
         <ul className={pokedex}>
-          {filteredPokemon.map((pokemon, index) => {
+          {filteredPokemon.map((pokemon) => {
             return (
               <li key={pokemon.id} className={pokedexItem}>
                 <Link to={`/${pokemon.slug}`} className={pokemonLink}>
@@ -120,27 +120,6 @@ export const query = graphql`
           ns
           data
           language
-        }
-      }
-    }
-    allPokemon {
-      nodes {
-        id
-        name
-        names {
-          name
-          language {
-            name
-          }
-        }
-        sprites {
-          front_default
-        }
-        pokedex_numbers {
-          entry_number
-          pokedex {
-            name
-          }
         }
       }
     }
