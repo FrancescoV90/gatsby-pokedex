@@ -5,11 +5,16 @@
   Gatsby Pokedex
 </h1>
 
-## **Public access to the project.**
-Repo: https://github.com/FrancescoV90/gatsby-pokedex
-Web Release: https://gatsby-pokedex.pages.dev/
+## **GitHub Repo.**
+
+https://github.com/FrancescoV90/gatsby-pokedex
+
+## **Web Release.**
+
+https://gatsby-pokedex.pages.dev/
 
 ## **Start local developing.**
+
 Navigate into site’s directory and start it up.
 
 ```shell
@@ -18,6 +23,7 @@ npm run develop
 ```
 
 ## **Start local unit testing.**
+
 Navigate into site’s directory and start unit tests with jest.
 
 ```shell
@@ -26,6 +32,7 @@ npm run test
 ```
 
 ## **Start local E2E testing.**
+
 Navigate into site’s directory and start E2E tests with cypress.
 
 ```shell
