@@ -10,17 +10,17 @@ exports.sourceNodes = async ({
 }) => {
   const { createNode } = actions;
 
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151", {method: 'GET', heder: {Host: 'pokeapi.co'}});
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
   const json = await response.json();
   const { results = [] } = json;
 
   const pokemon = await Promise.all(
     results.map(async (result) => {
       const { url } = result;
-      const pokeResponse1 = await fetch(url, {method: 'GET', heder: {Host: 'pokeapi.co'}});
+      const pokeResponse1 = await fetch(url);
       const json1 = await pokeResponse1.json();
       const { species } = json1;
-      const pokeResponse2 = await fetch(species.url, {method: 'GET', heder: {Host: 'pokeapi.co'}});
+      const pokeResponse2 = await fetch(species.url);
       const json2 = await pokeResponse2.json();
       return { ...json1, ...json2 };
     })

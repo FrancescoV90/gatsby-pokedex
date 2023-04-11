@@ -8,6 +8,7 @@ import {
   siteTitle,
   langList,
   langLink,
+  langImg,
   footer,
 } from "./layout.module.css";
 
@@ -30,9 +31,10 @@ const Layout = ({ children }) => {
                     src={`https://truelayer.com/images/flags/${
                       lng === "en" ? "gb" : lng
                     }.svg`}
-                    alt="Language flag"
+                    alt={t("language_flag")}
                     width={24}
                     height={18}
+                    className={langImg}
                   />
                   {lng}
                 </Link>
