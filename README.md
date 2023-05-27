@@ -9,10 +9,6 @@
 
 https://github.com/FrancescoV90/gatsby-pokedex
 
-## **Web Release.**
-
-https://gatsby-pokedex.pages.dev/
-
 ## **Start local developing.**
 
 Navigate into site’s directory and start it up.
