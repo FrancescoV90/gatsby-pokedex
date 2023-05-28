@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Gatsby" src="https://gatsby-pokedex.pages.dev/icons/icon-512x512.png?v=d37e56d401adf5cdd18919945d72bcff" width="60" />
+  <img alt="Gatsby" src="./src/images/icon.png" width="60" />
 </p>
 <h1 align="center">
   Gatsby Pokedex
